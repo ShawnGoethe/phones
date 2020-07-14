@@ -24,12 +24,17 @@ module.exports = appInfo => {
     // myAppNamme: 'egg',
   };
   config.sequelize = {
-    username: 'root',
-    password: 'gjwdzjl',
+    username: 'mall',
+    password: 'MALL',
     dialect: 'mysql',
     host: '39.105.25.74',
     port: 3306,
-    database: 'random',
+    database: 'phones',
+  };
+  config.security = {
+    csrf: {
+      enable: false,
+    },
   };
 
   return {
