@@ -22,6 +22,10 @@ module.exports = app => {
     del: INTEGER,
     rearCamera: STRING(5),
     nowPrice: INTEGER,
+    cpu: STRING(30),
+    rearMax: INTEGER,
+    frontMax: INTEGER,
+    cg: INTEGER, // communication generation
   });
 
   return Phone;

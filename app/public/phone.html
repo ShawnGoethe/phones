@@ -23,16 +23,20 @@
             <el-table :data=phoneData style="width: 100%">
                 <!-- <el-table-column prop="id" label="序号"> </el-table-column> -->
                 <el-table-column prop="name" label="名字" width="150"> </el-table-column>
-                <el-table-column prop="brand" label="品牌" width="130" :filters=brand :filter-method="filterHandler">
+                <el-table-column prop="brand" label="品牌" width="80" :filters=brand :filter-method="filterHandler">
                 </el-table-column>
-                <el-table-column prop="inch" label="屏幕尺寸" width="150"> </el-table-column>
-                <el-table-column prop="nfc" label="具备NFC" width="150"> </el-table-column>
-                <el-table-column prop="dualSpeaker" label="双扬声器" width="150"> </el-table-column>
-                <el-table-column prop="headphonePlug" label="耳机孔" width="150"> </el-table-column>
-                <el-table-column prop="battery" label="电量" width="150"> </el-table-column>
-                <el-table-column prop="charging" label="充电速率" width="150"> </el-table-column>
-                <el-table-column prop="frontCamera" label="前摄方式" width="150"> </el-table-column>
-                <el-table-column prop="rearCamera" label="后摄个数" width="150"> </el-table-column>
+                <el-table-column prop="inch" label="屏幕" width="50"> </el-table-column>
+                <el-table-column prop="nfc" label="NFC" width="50"> </el-table-column>
+                <el-table-column prop="dualSpeaker" label="双扬" width="50"> </el-table-column>
+                <el-table-column prop="headphonePlug" label="耳机孔" width="80"> </el-table-column>
+                <el-table-column prop="battery" label="电量" width="50"> </el-table-column>
+                <el-table-column prop="charging" label="充电" width="60"> </el-table-column>
+                <el-table-column prop="frontCamera" label="前摄" width="80"> </el-table-column>
+                <el-table-column prop="rearCamera" label="后摄个数" width="80"> </el-table-column>
+                <el-table-column prop="rearMax" label="后摄最高" width="80"> </el-table-column>
+                <el-table-column prop="frontMax" label="前摄最高" width="80"> </el-table-column>
+                <el-table-column prop="cpu" label="cpu" width="150"> </el-table-column>
+                <el-table-column prop="cg" label="通信" width="50"> </el-table-column>
                 <el-table-column prop="price" label="价格" width="100"> </el-table-column>
                 <el-table-column prop="nowPrice" label="现在价格" width="100"> </el-table-column>
                 <el-table-column prop="desc" type="textarea" label="介绍" width="150"> </el-table-column>

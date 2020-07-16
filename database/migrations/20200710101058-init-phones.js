@@ -16,6 +16,10 @@ module.exports = {
       os: STRING(30),
       dualSpeaker :INTEGER ,
       frontCamera :STRING(30),
+      cpu :STRING(30),
+      rearMax:INTEGER,
+      frontMax:INTEGER,
+      cg:INTEGER,//communication generation
       created_at: DATE,
       updated_at: DATE,
     });

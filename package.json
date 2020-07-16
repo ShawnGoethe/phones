@@ -1,5 +1,5 @@
 {
-  "name": "random",
+  "name": "phone",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -12,7 +12,9 @@
     "egg-scripts": "^2.11.0",
     "egg-sequelize": "^5.2.2",
     "element-ui": "^2.13.0",
+    "eslint": "^7.4.0",
     "mysql2": "^2.1.0",
+    "request": "^2.88.2",
     "vue": "^2.6.11",
     "vue-server-renderer": "^2.6.11"
   },
@@ -22,7 +24,6 @@
     "egg-bin": "^4.11.0",
     "egg-ci": "^1.11.0",
     "egg-mock": "^3.21.0",
-    "eslint": "^5.13.0",
     "eslint-config-egg": "^7.1.0",
     "sequelize-cli": "^6.2.0"
   },
@@ -30,8 +31,8 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-random",
-    "stop": "egg-scripts stop --title=egg-server-random",
+    "start": "egg-scripts start  --title=egg-server-phone",
+    "stop": "egg-scripts stop --title=egg-server-phone",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",

@@ -32,6 +32,24 @@
             <el-form-item label="屏幕尺寸">
                 <el-input v-model="form.inch"></el-input>
             </el-form-item>
+            <el-form-item label="cpu">
+                <el-radio-group v-model="form.cpu">
+                    <el-radio label="Snapdragon 865"></el-radio>
+                    <el-radio label="Snapdragon 865 Plus"></el-radio>
+                    <el-radio label="Snapdragon 855"></el-radio>
+                    <el-radio label="Snapdragon 765G"></el-radio>
+                    <el-radio label="Snapdragon 730G"></el-radio>
+                    <el-radio label="Snapdragon 710"></el-radio>
+                    <el-radio label="Snapdragon 845"></el-radio>
+                    <el-radio label="Snapdragon 835"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="前摄最大像素">
+                <el-input v-model="form.frontMax"></el-input>
+            </el-form-item>
+            <el-form-item label="后摄最大像素">
+                <el-input v-model="form.rearMax"></el-input>
+            </el-form-item>
             <el-form-item label="电池容量">
                 <el-input v-model="form.battery"></el-input>
             </el-form-item>
@@ -46,13 +64,23 @@
                     <el-radio label="1"></el-radio>
                     <el-radio label="2"></el-radio>
                     <el-radio label="3"></el-radio>
-                    <el-radio label="3+"></el-radio>
+                    <el-radio label="4"></el-radio>
+                    <el-radio label="5"></el-radio>
+                    <el-radio label="6"></el-radio>
+                    <el-radio label="7"></el-radio>
+                    <el-radio label="8"></el-radio>
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="拥有NFC">
                 <el-radio-group v-model="form.nfc">
-                    <el-radio label="是" value=1></el-radio>
-                    <el-radio label="否" value=0></el-radio>
+                    <el-radio label="是"></el-radio>
+                    <el-radio label="否"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="通信代数">
+                <el-radio-group v-model="form.cg">
+                    <el-radio label="4"></el-radio>
+                    <el-radio label="5"></el-radio>
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="双扬声器">
@@ -64,6 +92,7 @@
             <el-form-item label="前摄方式">
                 <el-radio-group v-model="form.frontCamera">
                     <el-radio label="屏下方式"></el-radio>
+                    <el-radio label="刘海方式"></el-radio>
                     <el-radio label="弹出方式"></el-radio>
                     <el-radio label="屏幕上方"></el-radio>
                     <el-radio label="挖单孔"></el-radio>
@@ -86,7 +115,8 @@
                 <el-input v-model="form.nowPrice"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                <el-button :plain="true" @click="onSubmit">立即创建</el-button>
+                <!-- <el-button type="primary" @click="onSubmit">立即创建</el-button> -->
                 <el-button>取消</el-button>
             </el-form-item>
         </el-form>
@@ -131,6 +161,7 @@
                 }).then(response => {
                     console.log('response==>', response);
                 })
+                this.$message('创建成功');
             }
         }
     })
