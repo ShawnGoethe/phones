@@ -1,7 +1,7 @@
 /* eslint valid-jsdoc: "off" */
 
 'use strict';
-const path = require('path');
+const fs = require('fs');
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -31,6 +31,9 @@ module.exports = appInfo => {
     port: 3306,
     database: 'phones',
   };
+  config.siteFile = {
+    '/favicon.ico': fs.readFileSync('favicon.ico'),
+  },
   config.security = {
     csrf: {
       enable: false,

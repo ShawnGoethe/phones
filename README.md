@@ -1,33 +1,34 @@
-# random
+<div align="center">
+<h1>Phone</h1>
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg"/>
+  <img src="https://img.shields.io/static/v1?label=electron&message=7.1.7&color="/>
+  <img src="https://img.shields.io/static/v1?label=mac|win|linux&message=7.1.7&color=yellow"/>
+</div>
 
 
 
-## QuickStart
+## Todo List
 
-<!-- add docs here for user -->
+---
 
-see [egg docs][egg] for more detail.
+:hand:新增筛选按钮，根据电池容量，通信几代来进行筛选
 
-### Development
+:hand:新增淘宝接口，实时更新价格（至少一天一次）
 
-```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/
-```
+:hand:优化新增接口，新增校验功能
 
-### Deploy
+:hand:新增手机周边推荐，DXO，耳机推荐
 
-```bash
-$ npm start
-$ npm stop
-```
+:white_check_mark:服务搭建上线，image推送[2020-06-04@ShawnGoethe]
 
-### npm scripts
-
-- Use `npm run lint` to check code style.
-- Use `npm test` to run unit test.
-- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
+:white_check_mark:具备新增删除功能（删除暂时隐藏)[2020-07-16@ShawnGoethe]
 
 
-[egg]: https://eggjs.org
+
+## About me
+
+---
+
+- 技术博客：[http://zehai.info](http://zehai.info/)
+- Github：http://github.com/ShawnGoethe
+- Contact：569326840@qq.com
