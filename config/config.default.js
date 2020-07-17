@@ -33,7 +33,7 @@ module.exports = appInfo => {
   };
   config.siteFile = {
     '/favicon.ico': fs.readFileSync('favicon.ico'),
-  },
+  };
   config.security = {
     csrf: {
       enable: false,

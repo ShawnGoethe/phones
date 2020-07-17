@@ -44,10 +44,10 @@
                     <el-radio label="Snapdragon 835"></el-radio>
                 </el-radio-group>
             </el-form-item>
-            <el-form-item label="前摄最大像素">
+            <el-form-item label="前摄最大">
                 <el-input v-model="form.frontMax"></el-input>
             </el-form-item>
-            <el-form-item label="后摄最大像素">
+            <el-form-item label="后摄最大">
                 <el-input v-model="form.rearMax"></el-input>
             </el-form-item>
             <el-form-item label="电池容量">
@@ -132,6 +132,7 @@
         el: '#app',
         data() {
             return {
+                cpuData:[],
                 form: {
                     name: '',
                     brand: '',
@@ -151,6 +152,12 @@
             }
         },
         methods: {
+            created: function () {
+                let that = this;
+                axios.get('/cpu?limit=30&offset=0').then(function (response) {
+                    that.cpuData = response.data;
+                })
+            },
             onSubmit() {
                 console.log(this.form);
                 const { form } = this;

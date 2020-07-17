@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up:async (queryInterface, Sequelize) => {
     const { INTEGER, DATE, STRING } = Sequelize;
     await queryInterface.createTable('phones', {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },

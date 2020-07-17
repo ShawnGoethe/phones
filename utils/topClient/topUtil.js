@@ -1,6 +1,7 @@
-var crypto = require('crypto');
-var util = require('util');
-var stream = require('stream');
+'use strict'
+const crypto = require('crypto');
+const util = require('util');
+const stream = require('stream');
 
 /**
  * hash
@@ -12,8 +13,8 @@ var stream = require('stream');
  * @public
  */
 exports.hash = function hash(method, s, format) {
-    var sum = crypto.createHash(method);
-    var isBuffer = Buffer.isBuffer(s);
+    const sum = crypto.createHash(method);
+    const isBuffer = Buffer.isBuffer(s);
     if (!isBuffer && typeof s === 'object') {
         s = JSON.stringify(sortObject(s));
     }
@@ -33,14 +34,14 @@ exports.md5 = function md5(s, format) {
     return exports.hash('md5', s, format);
 };
 
-exports.YYYYMMDDHHmmss = function (d, options) {
+exports.YYYYMMDDHHmmss = function(d, options) {
     d = d || new Date();
     if (!(d instanceof Date)) {
         d = new Date(d);
     }
 
-    var dateSep = '-';
-    var timeSep = ':';
+    let dateSep = '-';
+    let timeSep = ':';
     if (options) {
         if (options.dateSep) {
             dateSep = options.dateSep;
@@ -49,23 +50,23 @@ exports.YYYYMMDDHHmmss = function (d, options) {
             timeSep = options.timeSep;
         }
     }
-    var date = d.getDate();
+    let date = d.getDate();
     if (date < 10) {
         date = '0' + date;
     }
-    var month = d.getMonth() + 1;
+    let month = d.getMonth() + 1;
     if (month < 10) {
         month = '0' + month;
     }
-    var hours = d.getHours();
+    let hours = d.getHours();
     if (hours < 10) {
         hours = '0' + hours;
     }
-    var mintues = d.getMinutes();
+    let mintues = d.getMinutes();
     if (mintues < 10) {
         mintues = '0' + mintues;
     }
-    var seconds = d.getSeconds();
+    let seconds = d.getSeconds();
     if (seconds < 10) {
         seconds = '0' + seconds;
     }
@@ -73,39 +74,38 @@ exports.YYYYMMDDHHmmss = function (d, options) {
         hours + timeSep + mintues + timeSep + seconds;
 };
 
-exports.checkRequired = function (params, keys) {
+exports.checkRequired = function(params, keys) {
     if (!Array.isArray(keys)) {
-        keys = [keys];
+        keys = [ keys ];
     }
-    for (var i = 0, l = keys.length; i < l; i++) {
-        var k = keys[i];
+    for (let i = 0, l = keys.length; i < l; i++) {
+        const k = keys[i];
         if (!params.hasOwnProperty(k)) {
-            var err = new Error('`' + k + '` required');
-            err.name = "ParameterMissingError";
+            const err = new Error('`' + k + '` required');
+            err.name = 'ParameterMissingError';
             return err;
         }
     }
 };
 
-exports.getApiResponseName = function(apiName){
-    var reg = /\./g;
-    if(apiName.match("^taobao"))
-        apiName = apiName.substr(7);
-    return apiName.replace(reg,'_')+"_response";
-}
+exports.getApiResponseName = function(apiName) {
+    const reg = /\./g;
+    if (apiName.match('^taobao')) { apiName = apiName.substr(7); }
+    return apiName.replace(reg, '_') + '_response';
+};
 
-exports.getLocalIPAdress = function (){
-    var interfaces = require('os').networkInterfaces();
-    for(var devName in interfaces){
-        var iface = interfaces[devName];
-        for(var i=0;i<iface.length;i++){
-            var alias = iface[i];
-            if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){
+exports.getLocalIPAdress = function() {
+    const interfaces = require('os').networkInterfaces();
+    for (const devName in interfaces) {
+        const iface = interfaces[devName];
+        for (let i = 0; i < iface.length; i++) {
+            const alias = iface[i];
+            if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
                 return alias.address;
             }
         }
     }
-}
+};
 
 /**
  * Simple Utility Methods for checking information about a value.
@@ -116,10 +116,10 @@ exports.getLocalIPAdress = function (){
 
 exports.is = function(value) {
     return {
-        a: function (check) {
-            if (check.prototype) check = check.prototype.constructor.name
-            var type = Object.prototype.toString.call(value).slice(8, -1).toLowerCase()
-            return value != null && type === check.toLowerCase()
-        }
-    }
-}
+        a(check) {
+            if (check.prototype) check = check.prototype.constructor.name;
+            const type = Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
+            return value != null && type === check.toLowerCase();
+        },
+    };
+};

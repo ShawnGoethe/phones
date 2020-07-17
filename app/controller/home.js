@@ -2,11 +2,7 @@
 
 const Controller = require('egg').Controller;
 const fs = require('fs');
-const Vue = require('vue');
 const path = require('path');
-const { createRenderer } = require('vue-server-renderer');
-
-
 class HomeController extends Controller {
   async index() {
     try {
