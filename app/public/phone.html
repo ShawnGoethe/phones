@@ -18,13 +18,15 @@
                     <el-menu-item index="1-2">选项2</el-menu-item>
                     <el-menu-item index="1-3">选项3</el-menu-item>
                 </el-submenu>
-                <!-- <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">新增数据</el-button> -->
             </el-menu>
             <div class="line"></div>
             <el-table :data=phoneData style="width: 100%">
                 <!-- <el-table-column prop="id" label="序号"> </el-table-column> -->
+                <el-table-column prop="rec" label="星" width="40" :filters="[ {text: '🌟', value: '🌟'}]"
+                    :filter-method="filterHandler">
+                </el-table-column>
                 <el-table-column prop="name" label="名字" width="150"> </el-table-column>
-                <el-table-column prop="brand" label="品牌" width="80" :filters=brand :filter-method="filterHandler">
+                <el-table-column prop="brand" label="品牌" width="80" :filters=brandFilter :filter-method="filterHandler">
                 </el-table-column>
                 <el-table-column prop="inch" label="屏幕" width="50"> </el-table-column>
                 <el-table-column prop="nfc" label="NFC" width="50"> </el-table-column>
@@ -36,22 +38,34 @@
                 <el-table-column prop="rearCamera" label="后摄个数" width="80"> </el-table-column>
                 <el-table-column prop="rearMax" label="后摄最高" width="80"> </el-table-column>
                 <el-table-column prop="frontMax" label="前摄最高" width="80"> </el-table-column>
-                <el-table-column prop="cpu" label="cpu" width="150"> </el-table-column>
+                <el-table-column prop="cpu" label="cpu" width="150" :filters=cpuFilter :filter-method="filterHandler">
+                </el-table-column>
                 <el-table-column prop="cg" label="通信" width="50"> </el-table-column>
                 <el-table-column prop="price" label="价格" width="100"> </el-table-column>
                 <el-table-column prop="nowPrice" label="现在价格" width="100"> </el-table-column>
                 <el-table-column prop="desc" type="textarea" label="介绍" width="150"> </el-table-column>
-                <!-- <el-table-column label="操作">
+                <el-table-column label="操作">
+                    <template slot="header" slot-scope="scope">
+                        <el-input v-model="search" size="mini" @change='handleSearch' placeholder="输入关键字搜索" />
+                    </template>
                     <template slot-scope="scope">
-                        <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                        <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除
+                        <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑(未开放)</el-button>
+                        <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除(未开放)
                         </el-button>
                     </template>
-                </el-table-column> -->
+                </el-table-column>
+
             </el-table>
+            <div class="block">
+                <el-pagination layout="prev, pager, next" :total="50">
+                </el-pagination>
+            </div>
 
         </template>
-
+        <el-divider><i class="el-icon-mobile-phone"></i></el-divider>
+        <template>
+            <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
+        </template>
     </div>
 </body>
 <!-- 先引入 Vue -->
@@ -64,6 +78,7 @@
         el: '#app',
         data: {
             message: 'Hello Vue!',
+            search: '',
             phoneData: [],
             activeIndex: '1',
             activeIndex2: '1',
@@ -78,24 +93,38 @@
                 { text: 'Huawei', value: 'Huawei' },
                 { text: 'ASUS', value: 'ASUS' },
                 { text: 'BlackBerry', value: 'BlackBerry' },
-            ]
+            ],
+            cpuFilter: [
+                { text: 'Snapdragon', value: 'Snapdragon' },
+                { text: 'MTK', value: 'MTK' },
+                { text: 'HUAWEI Kirin', value: 'HUAWEI Kirin' },
+                { text: 'Samsung Exynos', value: 'Samsung Exynos' },],
         },
         created: function () {
             let that = this;
-            axios.get('/phones?limit=30&offset=0').then(function (response) {
+            axios.get('/phones?limit=100&offset=0').then(function (response) {
+                for (const p of response.data) {
+                    if (p.rec === 1) p.rec = '🌟';
+                }
                 that.phoneData = response.data;
             })
+            // axios.get('/brands?limit=30&offset=0').then(function (response) {
+            //     that.phoneData = response.data;
+            // })
+            // axios.get('/cpus?limit=30&offset=0').then(function (response) {
+            //     that.phoneData = response.data;
+            // })
         },
         mounted: function () {
 
         },
         methods: {
             handleDelete(index, row) {
-                axios.put('/phones/' + row.id, {
-                    del: 1
-                }).then(response => {
-                    console.log('response==>', response);
-                })
+                // axios.put('/phones/' + row.id, {
+                //     del: 1
+                // }).then(response => {
+                //     console.log('response==>', response);
+                // })
             },
             handleSelect(key, keyPath) {
                 console.log(key, keyPath);
@@ -104,6 +133,19 @@
                 const property = column['property'];
                 return row[property] === value;
             },
+            updatePhone(value, row, column) {
+                const property = column['property'];
+                return row[property] === value;
+            },
+            handleSearch(value) {
+                const that = this;
+                axios.get('/phones?limit=100&offset=0&search=' + value).then(function (response) {
+                    for (const p of response.data) {
+                        if (p.rec === 1) p.rec = '🌟';
+                    }
+                    that.phoneData = response.data;
+                })
+            }
         }
     })
 </script>

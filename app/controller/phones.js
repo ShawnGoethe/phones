@@ -1,5 +1,6 @@
 'use strict';
 const Controller = require('egg').Controller;
+const { Op } = require('sequelize');
 
 function toInt(str) {
   if (typeof str === 'number') return str;
@@ -10,7 +11,32 @@ function toInt(str) {
 class PhoneController extends Controller {
   async index() {
     const ctx = this.ctx;
-    const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset), where: { del: 0 } };
+    const search = ctx.query.search;
+    console.log('ctx.query.search', search);
+    const query = {
+      limit: toInt(ctx.query.limit),
+      offset: toInt(ctx.query.offset),
+      where: {
+        del: 0,
+        // [Op.or]: [
+        //   { name: { [Op.like]: '%' + search + '%' } },
+        //   { cpu: { [Op.like]: '%' + search + '%' } }],
+      },
+      order: [ 'id', 'DESC' ],
+      };
+      if (search) {
+       const or = [
+         { name: { [Op.like]: '%' + search + '%' } },
+         { cpu: { [Op.like]: '%' + search + '%' } },
+         { inch: { [Op.like]: '%' + search + '%' } },
+         { battery: { [Op.like]: '%' + search + '%' } },
+         { rearMax: { [Op.like]: '%' + search + '%' } },
+         { frontMax: { [Op.like]: '%' + search + '%' } },
+         { cg: { [Op.like]: '%' + search + '%' } },
+        ];
+       query.where[Op.or] = [];
+       query.where[Op.or] = or;
+      }
     ctx.body = await ctx.model.Phone.findAll(query);
   }
 

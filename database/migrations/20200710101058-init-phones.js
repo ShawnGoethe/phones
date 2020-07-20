@@ -20,6 +20,7 @@ module.exports = {
       rearMax:INTEGER,
       frontMax:INTEGER,
       cg:INTEGER,//communication generation
+      rec:INTEGER,
       created_at: DATE,
       updated_at: DATE,
     });

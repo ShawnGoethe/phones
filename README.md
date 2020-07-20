@@ -1,9 +1,10 @@
 <div align="center">
-<h1>Phone</h1>
+<h1>📱Phones</h1>
   <img src="https://img.shields.io/badge/License-MIT-blue.svg"/>
   <img src="https://img.shields.io/static/v1?label=electron&message=7.1.7&color="/>
-  <img src="https://img.shields.io/static/v1?label=mac|win|linux&message=7.1.7&color=yellow"/>
+  <img src="https://img.shields.io/badge/language-javascript-yellow.svg?style=flat-square"/>
 </div>
+
 
 
 ## What I can do
@@ -12,6 +13,24 @@
 - 根据偏好，推荐手机
 - 集成评测视频，购买链接，低价推荐
 - 提供更多产品推荐，消费者发声
+
+
+
+## Environment
+
+提供使用版本，以及最主要的技术名词，详细可见[package.json](./package.json)
+
+```
+- node v12.16.2
+- eggjs v2.15.1
+- egg-mysql: 3.0.0
+- egg-sequelize: 5.2.2
+- vue: 2.6.11
+- vue-server-renderer: 2.6.11
+- element-ui: 2.13.0
+```
+
+
 
 ## Directory Structure
 
@@ -27,7 +46,7 @@ egg-project
 │   ├── service
 │   ├── schedule //定时爬取最新价格
 │   |   └── updatePrice.js
-│   ├── public //前段界面
+│   ├── public //vue前端界面
 │   └── extend 
 ├── config
 |   ├── plugin.js//插件
@@ -37,7 +56,7 @@ egg-project
 
 
 
-## Todo List
+## 🐼Todo List
 
 :hand:新增筛选按钮，根据电池容量，通信几代来进行筛选
 
@@ -51,11 +70,19 @@ egg-project
 
 :white_check_mark:具备新增删除功能（删除暂时隐藏)[2020-07-16@ShawnGoethe]
 
+:white_check_mark:录入数据，新增搜索，新增星推功能[2020-07-20@ShawnGoethe]
 
 
-## Welcome PR
 
-项目处于新搭建状态，欢迎提交PR
+# 🚩Show
+
+![(./resource/index.jpg)
+
+
+
+## 😄Welcome PR
+
+（但愿有PR）项目处于新搭建状态，欢迎提交PR
 
 主要技术：Eggjs Sequelize VueSSR
 
@@ -69,7 +96,7 @@ egg-project
 >
 > For more: visit router.js
 
-## About me
+## 🚩About me
 
 - 技术博客：[http://zehai.info](http://zehai.info/)
 - Github：http://github.com/ShawnGoethe

@@ -1,3 +1,4 @@
+'use strict';
 const util = require('./topUtil.js');
 const iconv = require('iconv-lite');
 const URL = require('url');

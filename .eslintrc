@@ -2,5 +2,6 @@
   "extends": "eslint-config-egg",
   "rules": {
     "indent": "off",
+    "no-bitwise":"off",
   }
 }

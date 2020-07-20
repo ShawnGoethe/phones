@@ -26,6 +26,7 @@ module.exports = app => {
     rearMax: INTEGER,
     frontMax: INTEGER,
     cg: INTEGER, // communication generation
+    rec: INTEGER,
   });
 
   return Phone;
