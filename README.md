@@ -76,7 +76,7 @@ egg-project
 
 # 🚩Show
 
-![(./resource/index.jpg)
+![](https://zehai-github.oss-cn-beijing.aliyuncs.com/index.jpg)
 
 
 
