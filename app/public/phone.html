@@ -11,51 +11,55 @@
     <!--vue-ssr-outlet-->
     <div id="app">
         <template>
-            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-                <el-submenu index="1">
-                    <template slot="title">我的工作台</template>
-                    <el-menu-item index="1-1">新增数据</el-menu-item>
-                    <el-menu-item index="1-2">选项2</el-menu-item>
-                    <el-menu-item index="1-3">选项3</el-menu-item>
-                </el-submenu>
-            </el-menu>
-            <div class="line"></div>
-            <el-table :data=phoneData style="width: 100%">
-                <!-- <el-table-column prop="id" label="序号"> </el-table-column> -->
-                <el-table-column prop="rec" label="星" width="40" :filters="[ {text: '🌟', value: '🌟'}]"
-                    :filter-method="filterHandler">
-                </el-table-column>
-                <el-table-column prop="name" label="名字" width="150"> </el-table-column>
-                <el-table-column prop="brand" label="品牌" width="80" :filters=brandFilter :filter-method="filterHandler">
-                </el-table-column>
-                <el-table-column prop="inch" label="屏幕" width="50"> </el-table-column>
-                <el-table-column prop="nfc" label="NFC" width="50"> </el-table-column>
-                <el-table-column prop="dualSpeaker" label="双扬" width="50"> </el-table-column>
-                <el-table-column prop="headphonePlug" label="耳机孔" width="80"> </el-table-column>
-                <el-table-column prop="battery" label="电量" width="50"> </el-table-column>
-                <el-table-column prop="charging" label="充电" width="60"> </el-table-column>
-                <el-table-column prop="frontCamera" label="前摄" width="80"> </el-table-column>
-                <el-table-column prop="rearCamera" label="后摄个数" width="80"> </el-table-column>
-                <el-table-column prop="rearMax" label="后摄最高" width="80"> </el-table-column>
-                <el-table-column prop="frontMax" label="前摄最高" width="80"> </el-table-column>
-                <el-table-column prop="cpu" label="cpu" width="150" :filters=cpuFilter :filter-method="filterHandler">
-                </el-table-column>
-                <el-table-column prop="cg" label="通信" width="50"> </el-table-column>
-                <el-table-column prop="price" label="价格" width="100"> </el-table-column>
-                <el-table-column prop="nowPrice" label="现在价格" width="100"> </el-table-column>
-                <el-table-column prop="desc" type="textarea" label="介绍" width="150"> </el-table-column>
-                <el-table-column label="操作">
-                    <template slot="header" slot-scope="scope">
-                        <el-input v-model="search" size="mini" @change='handleSearch' placeholder="输入关键字搜索" />
-                    </template>
-                    <template slot-scope="scope">
-                        <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑(未开放)</el-button>
-                        <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除(未开放)
-                        </el-button>
-                    </template>
-                </el-table-column>
+            <div align="center">
+                <h1>📱Phones</h1>
+                <p></p>
+            </div>
+            <el-tabs type="border-card">
+                <el-tab-pane label="用户管理">用户管理</el-tab-pane>
+                <el-tab-pane label="配置管理">配置管理</el-tab-pane>
+                <el-tab-pane label="角色管理">角色管理</el-tab-pane>
+                <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
+                <el-table :data=phoneData style="width: 100%">
+                    <!-- <el-table-column prop="id" label="序号"> </el-table-column> -->
+                    <el-table-column prop="rec" label="星" width="40" :filters="[ {text: '🌟', value: '🌟'}]"
+                        :filter-method="filterHandler">
+                    </el-table-column>
+                    <el-table-column prop="name" label="名字" width="150"> </el-table-column>
+                    <el-table-column prop="brand" label="品牌" width="80" :filters=brandFilter
+                        :filter-method="filterHandler">
+                    </el-table-column>
+                    <el-table-column prop="inch" label="屏幕" width="50"> </el-table-column>
+                    <el-table-column prop="nfc" label="NFC" width="50"> </el-table-column>
+                    <el-table-column prop="dualSpeaker" label="双扬" width="50"> </el-table-column>
+                    <el-table-column prop="headphonePlug" label="耳机孔" width="80"> </el-table-column>
+                    <el-table-column prop="battery" label="电量" width="50"> </el-table-column>
+                    <el-table-column prop="charging" label="充电" width="60"> </el-table-column>
+                    <el-table-column prop="frontCamera" label="前摄" width="80"> </el-table-column>
+                    <el-table-column prop="rearCamera" label="后摄个数" width="80"> </el-table-column>
+                    <el-table-column prop="rearMax" label="后摄最高" width="80"> </el-table-column>
+                    <el-table-column prop="frontMax" label="前摄最高" width="80"> </el-table-column>
+                    <el-table-column prop="cpu" label="cpu" width="150" :filters=cpuFilter
+                        :filter-method="filterHandler">
+                    </el-table-column>
+                    <el-table-column prop="cg" label="通信" width="50"> </el-table-column>
+                    <el-table-column prop="price" label="价格" width="100"> </el-table-column>
+                    <el-table-column prop="nowPrice" label="现在价格" width="100"> </el-table-column>
+                    <el-table-column prop="desc" type="textarea" label="介绍" width="150"> </el-table-column>
+                    <el-table-column label="操作">
+                        <template slot="header" slot-scope="scope">
+                            <el-input v-model="search" size="mini" @change='handleSearch' placeholder="输入关键字搜索" />
+                        </template>
+                        <template slot-scope="scope">
+                            <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑(未开放)</el-button>
+                            <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除(未开放)
+                            </el-button>
+                        </template>
+                    </el-table-column>
 
-            </el-table>
+                </el-table>
+            </el-tabs>
+
             <div class="block">
                 <el-pagination layout="prev, pager, next" :total="50">
                 </el-pagination>

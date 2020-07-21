@@ -6,19 +6,20 @@
 </div>
 
 
+[ English | [中文](./README-CN.md) ]
 
 ## What I can do
 
-- 列举主流销售手机产品，可以根据个人爱好，筛选手机种类
-- 根据偏好，推荐手机
-- 集成评测视频，购买链接，低价推荐
-- 提供更多产品推荐，消费者发声
+- list Phone with its feature
+- you can choose a suitable phone by filter
+- Integrated recommend video,discount,link
+- more products recommend not only phones (maybe)
 
 
 
 ## Environment
 
-提供使用版本，以及最主要的技术名词，详细可见[package.json](./package.json)
+List main language and their versions，for more -->[package.json](./package.json)
 
 ```
 - node v12.16.2
@@ -34,43 +35,43 @@
 
 ## Directory Structure
 
-使用Eggjs完成开发架构
+Use Eggjs
 
 ```
 egg-project
 ├── package.json
 ├── app
-|   ├── router.js//路由
+|   ├── router.js
 │   ├── controller
 │   |   └── home.js
 │   ├── service
-│   ├── schedule //定时爬取最新价格
+│   ├── schedule
 │   |   └── updatePrice.js
-│   ├── public //vue前端界面
+│   ├── public 
 │   └── extend 
 ├── config
-|   ├── plugin.js//插件
-|   ├── config.default.js//目前使用该环境
-├── phones_phones.sql//数据库文件
+|   ├── plugin.js
+|   ├── config.default.js
+├── phones_phones.sql
 ```
 
 
 
 ## 🐼Todo List
 
-:hand:新增筛选按钮，根据电池容量，通信几代来进行筛选
+:hand: add filter to select phones
 
-:hand:新增淘宝接口，实时更新价格（至少一天一次）
+:hand: add TaoBao schedule，to update price (at least 1 times/day)
 
-:hand:优化新增接口，新增校验功能
+:hand: add check function when create new phones
 
-:hand:新增手机周边推荐，DXO，耳机推荐
+:hand: add more product to recommend ，such as dxo，earphone ,watch
 
-:white_check_mark:服务搭建上线，image推送[2020-06-04@ShawnGoethe]
+:white_check_mark:  publish v0.1-welcome,and first images[2020-06-04@ShawnGoethe]
 
-:white_check_mark:具备新增删除功能（删除暂时隐藏)[2020-07-16@ShawnGoethe]
+:white_check_mark:  have modify,delete function[2020-07-16@ShawnGoethe]
 
-:white_check_mark:录入数据，新增搜索，新增星推功能[2020-07-20@ShawnGoethe]
+:white_check_mark:  input data，new search，add star recommend[2020-07-20@ShawnGoethe]
 
 
 
@@ -82,9 +83,9 @@ egg-project
 
 ## 😄Welcome PR
 
-（但愿有PR）项目处于新搭建状态，欢迎提交PR
+wecome PR if I have
 
-主要技术：Eggjs Sequelize VueSSR
+Main Language：Eggjs Sequelize VueSSR
 
 > npm run dev //to start
 >
@@ -98,6 +99,6 @@ egg-project
 
 ## 🚩About me
 
-- 技术博客：[http://zehai.info](http://zehai.info/)
+- Blog：[http://zehai.info](http://zehai.info/)
 - Github：http://github.com/ShawnGoethe
 - Contact：569326840@qq.com
