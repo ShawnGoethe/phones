@@ -12,15 +12,11 @@ class PhoneController extends Controller {
   async index() {
     const ctx = this.ctx;
     const search = ctx.query.search;
-    console.log('ctx.query.search', search);
     const query = {
       limit: toInt(ctx.query.limit),
       offset: toInt(ctx.query.offset),
       where: {
         del: 0,
-        // [Op.or]: [
-        //   { name: { [Op.like]: '%' + search + '%' } },
-        //   { cpu: { [Op.like]: '%' + search + '%' } }],
       },
       order: [ 'id', 'DESC' ],
       };

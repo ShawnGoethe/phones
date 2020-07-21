@@ -6,6 +6,9 @@
 </div>
 
 
+[ [English](./README.md) | 中文 ]
+
+中文文档更新可能会延迟
 
 ## What I can do
 

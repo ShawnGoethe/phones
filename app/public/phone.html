@@ -16,60 +16,62 @@
                 <p></p>
             </div>
             <el-tabs type="border-card">
-                <el-tab-pane label="用户管理">用户管理</el-tab-pane>
-                <el-tab-pane label="配置管理">配置管理</el-tab-pane>
-                <el-tab-pane label="角色管理">角色管理</el-tab-pane>
-                <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
-                <el-table :data=phoneData style="width: 100%">
-                    <!-- <el-table-column prop="id" label="序号"> </el-table-column> -->
-                    <el-table-column prop="rec" label="星" width="40" :filters="[ {text: '🌟', value: '🌟'}]"
-                        :filter-method="filterHandler">
-                    </el-table-column>
-                    <el-table-column prop="name" label="名字" width="150"> </el-table-column>
-                    <el-table-column prop="brand" label="品牌" width="80" :filters=brandFilter
-                        :filter-method="filterHandler">
-                    </el-table-column>
-                    <el-table-column prop="inch" label="屏幕" width="50"> </el-table-column>
-                    <el-table-column prop="nfc" label="NFC" width="50"> </el-table-column>
-                    <el-table-column prop="dualSpeaker" label="双扬" width="50"> </el-table-column>
-                    <el-table-column prop="headphonePlug" label="耳机孔" width="80"> </el-table-column>
-                    <el-table-column prop="battery" label="电量" width="50"> </el-table-column>
-                    <el-table-column prop="charging" label="充电" width="60"> </el-table-column>
-                    <el-table-column prop="frontCamera" label="前摄" width="80"> </el-table-column>
-                    <el-table-column prop="rearCamera" label="后摄个数" width="80"> </el-table-column>
-                    <el-table-column prop="rearMax" label="后摄最高" width="80"> </el-table-column>
-                    <el-table-column prop="frontMax" label="前摄最高" width="80"> </el-table-column>
-                    <el-table-column prop="cpu" label="cpu" width="150" :filters=cpuFilter
-                        :filter-method="filterHandler">
-                    </el-table-column>
-                    <el-table-column prop="cg" label="通信" width="50"> </el-table-column>
-                    <el-table-column prop="price" label="价格" width="100"> </el-table-column>
-                    <el-table-column prop="nowPrice" label="现在价格" width="100"> </el-table-column>
-                    <el-table-column prop="desc" type="textarea" label="介绍" width="150"> </el-table-column>
-                    <el-table-column label="操作">
-                        <template slot="header" slot-scope="scope">
-                            <el-input v-model="search" size="mini" @change='handleSearch' placeholder="输入关键字搜索" />
-                        </template>
-                        <template slot-scope="scope">
-                            <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑(未开放)</el-button>
-                            <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除(未开放)
-                            </el-button>
-                        </template>
-                    </el-table-column>
+                <el-tab-pane>
+                    <span slot="label"><i class="el-icon-phone"></i> 手机</span>
 
-                </el-table>
+                    <el-table :data=phoneData style="width: 100%">
+                        <!-- <el-table-column prop="id" label="序号"> </el-table-column> -->
+                        <el-table-column prop="rec" label="星" width="40" :filters="[ {text: '🌟', value: '🌟'}]"
+                            :filter-method="filterHandler">
+                        </el-table-column>
+                        <el-table-column prop="name" label="名字" width="150"> </el-table-column>
+                        <el-table-column prop="brand" label="品牌" width="80" :filters=brandFilter
+                            :filter-method="filterHandler">
+                        </el-table-column>
+                        <el-table-column prop="inch" label="屏幕" width="50"> </el-table-column>
+                        <el-table-column prop="nfc" label="NFC" width="50"> </el-table-column>
+                        <el-table-column prop="dualSpeaker" label="双扬" width="50"> </el-table-column>
+                        <el-table-column prop="headphonePlug" label="耳机孔" width="80"> </el-table-column>
+                        <el-table-column prop="battery" label="电量" width="50"> </el-table-column>
+                        <el-table-column prop="charging" label="充电" width="60"> </el-table-column>
+                        <el-table-column prop="frontCamera" label="前摄" width="80"> </el-table-column>
+                        <el-table-column prop="rearCamera" label="后摄个数" width="80"> </el-table-column>
+                        <el-table-column prop="rearMax" label="后摄最高" width="80"> </el-table-column>
+                        <el-table-column prop="frontMax" label="前摄最高" width="80"> </el-table-column>
+                        <el-table-column prop="cpu" label="cpu" width="150" :filters=cpuFilter
+                            :filter-method="filterHandler">
+                        </el-table-column>
+                        <el-table-column prop="cg" label="通信" width="50"> </el-table-column>
+                        <el-table-column prop="price" label="价格" width="100"> </el-table-column>
+                        <el-table-column prop="nowPrice" label="现在价格" width="100"> </el-table-column>
+                        <el-table-column prop="desc" type="textarea" label="介绍" width="150"> </el-table-column>
+                        <el-table-column label="操作">
+                            <template slot="header" slot-scope="scope">
+                                <el-input v-model="search" size="mini" @change='handleSearch' placeholder="输入关键字搜索" />
+                            </template>
+                            <template slot-scope="scope">
+                                <!-- <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑(未开放)</el-button> -->
+                                <!-- <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">
+                                    删除(未开放)
+                                </el-button> -->
+                            </template>
+                        </el-table-column>
+
+                    </el-table>
+                </el-tab-pane>
+                <el-tab-pane label="耳机">耳机</el-tab-pane>
+                <el-tab-pane label="About Me">About Me</el-tab-pane>
             </el-tabs>
 
             <div class="block">
-                <el-pagination layout="prev, pager, next" :total="50">
+                <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                    :page-sizes="[10, 30, 50, 100]" :page-size="10" layout="sizes, prev, pager, next" :total="1000">
                 </el-pagination>
             </div>
 
         </template>
         <el-divider><i class="el-icon-mobile-phone"></i></el-divider>
-        <template>
-            <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
-        </template>
+
     </div>
 </body>
 <!-- 先引入 Vue -->
@@ -86,6 +88,8 @@
             phoneData: [],
             activeIndex: '1',
             activeIndex2: '1',
+            page: 0,
+            size: 9,
             brandFilter: [
                 { text: 'Xiaomi', value: 'Xiaomi' },
                 { text: 'OPPO', value: 'OPPO' },
@@ -105,13 +109,7 @@
                 { text: 'Samsung Exynos', value: 'Samsung Exynos' },],
         },
         created: function () {
-            let that = this;
-            axios.get('/phones?limit=100&offset=0').then(function (response) {
-                for (const p of response.data) {
-                    if (p.rec === 1) p.rec = '🌟';
-                }
-                that.phoneData = response.data;
-            })
+            this.getPhones(this.size, this.page);
             // axios.get('/brands?limit=30&offset=0').then(function (response) {
             //     that.phoneData = response.data;
             // })
@@ -149,7 +147,26 @@
                     }
                     that.phoneData = response.data;
                 })
-            }
+            },
+            getPhones(size, page) {
+                let that = this;
+                const offset = size * page;
+                axios.get('/phones?limit=' + size + '&offset=' + offset).then(function (response) {
+                    for (const p of response.data) {
+                        if (p.rec === 1) p.rec = '🌟';
+                    }
+                    that.phoneData = response.data;
+                })
+            },
+            handleSizeChange(val) {
+                this.size = val;
+                this.getPhones(this.size, 0);
+            },
+            handleCurrentChange(val) {
+                this.page = val;
+                this.getPhones(this.size, this.page);
+            },
+
         }
     })
 </script>

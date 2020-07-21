@@ -8,7 +8,7 @@
 
 [ English | [中文](./README-CN.md) ]
 
-## What I can do
+## 🤔 What I can do
 
 - list Phone with its feature
 - you can choose a suitable phone by filter
@@ -17,7 +17,7 @@
 
 
 
-## Environment
+## 🌞 Environment
 
 List main language and their versions，for more -->[package.json](./package.json)
 
@@ -33,7 +33,7 @@ List main language and their versions，for more -->[package.json](./package.jso
 
 
 
-## Directory Structure
+## 🌲 Directory Structure
 
 Use Eggjs
 
@@ -57,7 +57,7 @@ egg-project
 
 
 
-## 🐼Todo List
+## 🐼 Todo List
 
 :hand: add filter to select phones
 
@@ -81,21 +81,32 @@ egg-project
 
 
 
-## 😄Welcome PR
+## 😄 Welcome PR
 
 wecome PR if I have
 
 Main Language：Eggjs Sequelize VueSSR
 
-> npm run dev //to start
->
-> docker pull zhangzehai/phones:latest
->
-> docker run -itd --name phones -p 7001:7001 zhangzehai/phones:latest
->
-> Index-->localhost:7001/phone
->
-> For more: visit router.js
+
+
+## 🏠 Build
+
+### 1.You can use git clone to run this project 
+
+```shell
+git clone https://github.com/ShawnGoethe/phones.git
+npm install //cd phone folder
+npm run dev
+```
+
+### 2. You can build by docker
+
+```sh
+docker pull zhangzehai/phones:latest
+docker run -itd --name phones -p 7001:7001 zhangzehai/phones:latest
+```
+
+Finally open the web and input `http://127.0.0.1:7001/phone`  and then enjoy it
 
 ## 🚩About me
 

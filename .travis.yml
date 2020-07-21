@@ -1,14 +1,11 @@
+
 language: node_js
 node_js:
   - '10'
-ignore:
-    - *.md
-    - /utils
 before_install:
   - npm i npminstall -g
 install:
   - npminstall
-
 script:
   - npm run ci
 after_script:
