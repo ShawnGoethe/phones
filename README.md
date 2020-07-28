@@ -59,10 +59,6 @@ egg-project
 
 ## 🐼 Todo List
 
-:hand: add filter to select phones
-
-:hand: add TaoBao schedule，to update price (at least 1 times/day)
-
 :hand: add check function when create new phones
 
 :hand: add more product to recommend ，such as dxo，earphone ,watch
@@ -72,6 +68,8 @@ egg-project
 :white_check_mark:  have modify,delete function[2020-07-16@ShawnGoethe]
 
 :white_check_mark:  input data，new search，add star recommend[2020-07-20@ShawnGoethe]
+
+:white_check_mark:  add taobao update schedule,to update price. and filters[2020-07-28@ShawnGoethe]
 
 
 

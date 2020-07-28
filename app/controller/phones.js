@@ -55,16 +55,13 @@ class PhoneController extends Controller {
     const ctx = this.ctx;
 
     const id = toInt(ctx.params.id);
-    const phone = await ctx.model.Phone.findByPk(id);
-    if (!phone) {
-      ctx.status = 404;
-      return;
-    }
-
     const params = ctx.request.body;
-    const res = await phone.update({ id }, params);
-    console.log('res===>', res);
-    ctx.body = phone;
+    const res = ctx.model.Phone.update(params, {
+      where: {
+        id,
+      },
+    });
+    ctx.body = res;
   }
 
   async destroy() {

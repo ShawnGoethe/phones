@@ -16,7 +16,7 @@ module.exports = app => {
     os: STRING(30),
     dualSpeaker: INTEGER,
     frontCamera: STRING(30),
-    desc: STRING(100),
+    desc: STRING(700),
     createdAt: DATE,
     updatedAt: DATE,
     del: INTEGER,
@@ -28,6 +28,7 @@ module.exports = app => {
     cg: INTEGER, // communication generation
     rec: INTEGER,
     iid: STRING(15),
+    key: STRING(15),
   });
 
   return Phone;

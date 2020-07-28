@@ -35,7 +35,7 @@
             <el-form-item label="屏幕尺寸">
                 <el-input v-model="form.inch"></el-input>
             </el-form-item>
-            <el-form-item label="cpu">
+            <!-- <el-form-item label="cpu">
                 <el-radio-group v-model="form.cpu">
                     <el-radio label="Snapdragon 865"></el-radio>
                     <el-radio label="Snapdragon 865 Plus"></el-radio>
@@ -48,6 +48,9 @@
                     <el-radio label="HUAWEI Kirin 990 5G"></el-radio>
 
                 </el-radio-group>
+            </el-form-item> -->
+            <el-form-item label="cpu">
+                <el-input v-model="form.cpu"></el-input>
             </el-form-item>
             <el-form-item label="前摄最大">
                 <el-input v-model="form.frontMax"></el-input>
@@ -111,7 +114,7 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="描述">
-                <el-input type="textarea" v-model="form.desc"></el-input>
+                <el-input  v-model="form.desc"></el-input>
             </el-form-item>
             <el-form-item label="发布价格">
                 <el-input v-model="form.price"></el-input>
@@ -178,10 +181,22 @@
                 })
                 this.$message('更新成功');
             },
-            idChange: function () {
+            idChange: function (value) {
                 let that = this;
-                axios.get('/phones/1?_csrf=safe').then(function (response) {
-                    that.form = response.data;
+                axios.get('/phones/' + value).then(function (response) {
+                    console.log(response.data)
+                    // that.form = response.data;
+                    if (response.data !== '') {
+                        that.form = response.data;
+                    } else {
+                        that.$message('未找到相关数据');
+                        that.form = {
+                            id: '', name: '', brand: '', inch: '', battery: '', charging: '', os: '',
+                            rearCamera: '', nfc: '', dualSpeaker: '', frontCamera: '', headphonePlug: '', desc: '',
+                            price: '', nowPrice: '',
+                        }
+                    }
+
                 })
             },
             onSubmit() {
@@ -189,6 +204,7 @@
                 const { form } = this;
                 form.price = Number(form.price);
                 form.nowPrice = Number(form.nowPrice);
+                delete form.id;
                 axios.post('/phones?_csrf=safe', {
                     ...form
                 }).then(response => {
