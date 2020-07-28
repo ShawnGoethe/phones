@@ -1,7 +1,6 @@
-'use strict';
-const util = require('../topUtil.js');
-const RestClient = require('./network.js');
-const Stream = require('stream');
+var util = require('../topUtil.js');
+var RestClient = require('./network.js')
+var Stream = require('stream')
 
 /**
  * Dingtalk API Client.
@@ -27,16 +26,16 @@ function DingtalkClient(options) {
  * @param {Object} defaultResponse
  * @param {Function(err, response)} callback
  */
-DingtalkClient.prototype.invoke = function(type, method, params, reponseNames, callback) {
+DingtalkClient.prototype.invoke = function (type,method, params,reponseNames, callback) {
     params.method = method;
-    this.request(type, params, function(err, result) {
+    this.request(type,params,function (err, result) {
         if (err) {
             return callback(err);
         }
-        let response = result;
+        var response = result;
         if (reponseNames && reponseNames.length > 0) {
-            for (let i = 0; i < reponseNames.length; i++) {
-                const name = reponseNames[i];
+            for (var i = 0; i < reponseNames.length; i++) {
+                var name = reponseNames[i];
                 response = response[name];
                 if (response === undefined) {
                     break;
@@ -55,66 +54,66 @@ DingtalkClient.prototype.invoke = function(type, method, params, reponseNames, c
  * @param {Function(err, result)} callback
  * @public
  */
-DingtalkClient.prototype.request = function(type, params, callback) {
-    let err = util.checkRequired(params, 'method');
+DingtalkClient.prototype.request = function (type,params,callback) {
+    var err = util.checkRequired(params, 'method');
     if (err) {
         return callback(err);
     }
-    const args = {
+    var args = {
         timestamp: this.timestamp(),
         format: 'json',
         v: '2.0',
-        sign_method: 'md5',
+        sign_method: 'md5'
     };
 
-    let request = null;
-    if (type === 'get') {
+    var request = null;
+    if(type == 'get'){
         request = RestClient.get(this.url);
-    } else {
+    }else{
         request = RestClient.post(this.url);
     }
 
     for (var key in params) {
-        if (typeof params[key] === 'object' && Buffer.isBuffer(params[key])) {
-            request.attach(key, params[key], { knownLength: params[key].length, filename: key });
-        } else if (typeof params[key] === 'object' && Stream.Readable(params[key]) && !util.is(params[key]).a(String)) {
+        if(typeof params[key] === 'object' && Buffer.isBuffer(params[key])){
+            request.attach(key,params[key],{knownLength:params[key].length,filename:key})
+        } else if(typeof params[key] === 'object' && Stream.Readable(params[key]) && !util.is(params[key]).a(String)){
             request.attach(key, params[key]);
-        } else if (typeof params[key] === 'object') {
+        } else if(typeof params[key] === 'object'){
             args[key] = JSON.stringify(params[key]);
-        } else {
+        } else{
             args[key] = params[key];
         }
     }
 
     args.sign = this.sign(args);
-    for (var key in args) {
+    for(var key in args){
         request.field(key, args[key]);
     }
 
-    request.end(function(response) {
-        if (response.statusCode == 200) {
-            const data = response.body;
-            const errRes = data && data.error_response;
+    request.end(function(response){
+        if(response.statusCode == 200){
+            var data = response.body;
+            var errRes = data && data.error_response;
             if (errRes) {
                 callback(errRes, data);
-            } else {
+            }else{
                 callback(err, data);
             }
-        } else {
+        }else{
             err = new Error('NetWork-Error');
             err.name = 'NetWork-Error';
             err.code = 15;
             err.sub_code = response.statusCode;
             callback(err, null);
         }
-    });
+    })
 };
 
 /**
  * Get now timestamp with 'yyyy-MM-dd HH:mm:ss' format.
  * @return {String}
  */
-DingtalkClient.prototype.timestamp = function() {
+DingtalkClient.prototype.timestamp = function () {
     return util.YYYYMMDDHHmmss();
 };
 
@@ -125,11 +124,11 @@ DingtalkClient.prototype.timestamp = function() {
  * @param  {Object} params
  * @return {String} sign string
  */
-DingtalkClient.prototype.sign = function(params) {
-    const sorted = Object.keys(params).sort();
-    let basestring = this.appsecret;
-    for (let i = 0, l = sorted.length; i < l; i++) {
-        const k = sorted[i];
+DingtalkClient.prototype.sign = function (params) {
+    var sorted = Object.keys(params).sort();
+    var basestring = this.appsecret;
+    for (var i = 0, l = sorted.length; i < l; i++) {
+        var k = sorted[i];
         basestring += k + params[k];
     }
     basestring += this.appsecret;
@@ -139,12 +138,12 @@ DingtalkClient.prototype.sign = function(params) {
 /**
  * execute top api
  */
-DingtalkClient.prototype.execute = function(apiname, params, callback) {
-    this.invoke('post', apiname, params, [ util.getApiResponseName(apiname) ], callback);
+DingtalkClient.prototype.execute = function (apiname,params,callback) {
+    this.invoke('post',apiname, params, [util.getApiResponseName(apiname)], callback);
 };
 
-DingtalkClient.prototype.get = function(apiname, params, callback) {
-    this.invoke('get', apiname, params, [ util.getApiResponseName(apiname) ], callback);
+DingtalkClient.prototype.get = function (apiname,params,callback) {
+    this.invoke('get',apiname, params, [util.getApiResponseName(apiname)], callback);
 };
 
 exports.DingtalkClient = DingtalkClient;

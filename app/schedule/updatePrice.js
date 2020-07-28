@@ -4,16 +4,16 @@ const Subscription = require('egg').Subscription;
 class UpdatePrice extends Subscription {
   static get schedule() {
     return {
-      interval: '5s',
+      interval: '5d',
       type: 'worker',
     };
   }
   async subscribe() {
     try {
-      // const map = await this.ctx.service.taobao.getInfo();
-      // console.log('schdule==>', JSON.stringify(map));
+      const results = await this.ctx.service.taobao.getInfo();
+      console.log('results', results);
     } catch (e) {
-      console.log('sss==>', e);
+      console.log('e==>', e);
     }
   }
 }

@@ -53,6 +53,7 @@ class PhoneController extends Controller {
 
   async update() {
     const ctx = this.ctx;
+
     const id = toInt(ctx.params.id);
     const phone = await ctx.model.Phone.findByPk(id);
     if (!phone) {
@@ -60,8 +61,9 @@ class PhoneController extends Controller {
       return;
     }
 
-    const { del } = ctx.request.body;
-    await phone.update({ id }, { del });
+    const params = ctx.request.body;
+    const res = await phone.update({ id }, params);
+    console.log('res===>', res);
     ctx.body = phone;
   }
 

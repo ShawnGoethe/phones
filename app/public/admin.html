@@ -11,6 +11,9 @@
     <!--vue-ssr-outlet-->
     <div id="app">
         <el-form ref="form" :model="form" label-width="80px">
+            <el-form-item label="id">
+                <el-input v-model="form.id" @change='idChange'></el-input>
+            </el-form-item>
             <el-form-item label="手机名称">
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
@@ -43,7 +46,7 @@
                     <el-radio label="Snapdragon 845"></el-radio>
                     <el-radio label="Snapdragon 835"></el-radio>
                     <el-radio label="HUAWEI Kirin 990 5G"></el-radio>
-                    
+
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="前摄最大">
@@ -81,8 +84,8 @@
             </el-form-item>
             <el-form-item label="通信代数">
                 <el-radio-group v-model="form.cg">
-                    <el-radio label="4"></el-radio>
-                    <el-radio label="5"></el-radio>
+                    <el-radio label="4G"></el-radio>
+                    <el-radio label="5G"></el-radio>
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="双扬声器">
@@ -116,10 +119,14 @@
             <el-form-item label="现在价格">
                 <el-input v-model="form.nowPrice"></el-input>
             </el-form-item>
+            <el-form-item label="iid">
+                <el-input v-model="form.iid"></el-input>
+            </el-form-item>
             <el-form-item>
-                <el-button :plain="true" @click="onSubmit">立即创建</el-button>
+                <el-button :plain="true" @click="onSubmit">创建</el-button>
+                <el-button :plain="true" @click="updatePhone">更新</el-button>
                 <!-- <el-button type="primary" @click="onSubmit">立即创建</el-button> -->
-                <el-button>取消</el-button>
+                <!-- <el-button>取消</el-button> -->
             </el-form-item>
         </el-form>
     </div>
@@ -134,8 +141,9 @@
         el: '#app',
         data() {
             return {
-                cpuData:[],
+                cpuData: [],
                 form: {
+                    id: '',
                     name: '',
                     brand: '',
                     inch: '',
@@ -158,6 +166,22 @@
                 let that = this;
                 axios.get('/cpu?limit=30&offset=0').then(function (response) {
                     that.cpuData = response.data;
+                })
+            },
+            updatePhone: function () {
+                let that = this;
+                const { form } = this;
+                axios.put('/phones/1', {
+                    ...form
+                }).then(response => {
+                    console.log('response==>', response);
+                })
+                this.$message('更新成功');
+            },
+            idChange: function () {
+                let that = this;
+                axios.get('/phones/1?_csrf=safe').then(function (response) {
+                    that.form = response.data;
                 })
             },
             onSubmit() {

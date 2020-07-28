@@ -27,6 +27,7 @@ module.exports = app => {
     frontMax: INTEGER,
     cg: INTEGER, // communication generation
     rec: INTEGER,
+    iid: STRING(15),
   });
 
   return Phone;
