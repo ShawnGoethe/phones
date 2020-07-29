@@ -10,4 +10,8 @@ module.exports = {
     enable: true,
     package: 'egg-sequelize',
   },
+  xtransit: {
+    enable: true,
+    package: 'egg-xtransit',
+  },
 };

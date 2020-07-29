@@ -39,6 +39,11 @@ module.exports = appInfo => {
       enable: false,
     },
   };
+  config.xtransit = {
+    server: 'ws://120.27.24.200:7070',
+    appId: 1,
+    appSecret: 'f7b99d08cc0193106690860047b28970',
+  };
 
   return {
     ...config,

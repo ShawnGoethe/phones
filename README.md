@@ -11,9 +11,14 @@
 ## 🤔 What I can do
 
 - list Phone with its feature
+
 - you can choose a suitable phone by filter
+
 - Integrated recommend video,discount,link
+
 - more products recommend not only phones (maybe)
+
+  
 
 
 
@@ -29,7 +34,11 @@ List main language and their versions，for more -->[package.json](./package.jso
 - vue: 2.6.11
 - vue-server-renderer: 2.6.11
 - element-ui: 2.13.0
+- egg-jwt 
+- axios
 ```
+
+
 
 
 
@@ -57,9 +66,15 @@ egg-project
 
 
 
+
+
 ## 🐼 Todo List
 
+
+:hand: add monitor
 :hand: add check function when create new phones
+
+:hand: add login pages to prevent attack
 
 :hand: add more product to recommend ，such as dxo，earphone ,watch
 
@@ -87,6 +102,8 @@ Main Language：Eggjs Sequelize VueSSR
 
 
 
+
+
 ## 🏠 Build
 
 ### 1.You can use git clone to run this project 
@@ -97,7 +114,7 @@ npm install //cd phone folder
 npm run dev
 ```
 
-### 2. You can build by docker
+### 2. You can also build by docker
 
 ```sh
 docker pull zhangzehai/phones:latest
