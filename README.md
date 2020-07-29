@@ -36,6 +36,7 @@ List main language and their versions，for more -->[package.json](./package.jso
 - element-ui: 2.13.0
 - egg-jwt 
 - axios
+- eslint
 ```
 
 
@@ -70,8 +71,8 @@ egg-project
 
 ## 🐼 Todo List
 
+:hand: add monitor select from [alinode](https://www.aliyun.com/product/nodejs?spm=a2c4g.11174283.2.1.70ae30b15SwgUh)/[easy-monitor](https://www.npmjs.com/package/easy-monitor)
 
-:hand: add monitor
 :hand: add check function when create new phones
 
 :hand: add login pages to prevent attack
@@ -123,8 +124,33 @@ docker run -itd --name phones -p 7001:7001 zhangzehai/phones:latest
 
 Finally open the web and input `http://127.0.0.1:7001/phone`  and then enjoy it
 
+`http://127.0.0.1:7001/` is a ramdom test 😺
+
+### 3. Direct , u can visit my student VPS
+
+```shell
+http://39.105.25.74/phone
+I will update if I remember (use docker images)
+//nothing on it so Don't bother to hack
+```
+
+
+
 ## 🚩About me
 
 - Blog：[http://zehai.info](http://zehai.info/)
 - Github：http://github.com/ShawnGoethe
-- Contact：569326840@qq.com
+- Contact：569326840@qq.com 
+- 蓝桥杯国家奖获得者，国家本科奖学金获得者
+
+  
+
+
+
+## :link: Link
+
+Standing on the shoulders of giants
+
+- [Eggjs.org](https://github.com/eggjs/egg)
+
+- [eggVueSpaTemplate](https://github.com/klren0312/eggVueSpaTemplate)
