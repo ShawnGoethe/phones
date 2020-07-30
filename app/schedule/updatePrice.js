@@ -11,7 +11,7 @@ class UpdatePrice extends Subscription {
   async subscribe() {
     try {
       const results = await this.ctx.service.taobao.getInfo2();
-      // console.log('results', results);
+      console.log('results', results);
     } catch (e) {
       console.log('e==>', e);
     }

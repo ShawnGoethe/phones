@@ -71,7 +71,7 @@ class HomeController extends Controller {
     ctx.response.type = 'html';
     ctx.response.body = fs.createReadStream(path.join(__dirname, '../public/phone.html'));
   }
-  async phonesCreate() {
+  async phonesAdmin() {
     const { ctx } = this;
     ctx.response.type = 'html';
     ctx.response.body = fs.createReadStream(path.join(__dirname, '../public/admin.html'));
