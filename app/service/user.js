@@ -18,7 +18,7 @@ class UserService extends Service {
    * @return {Object} user 用户信息
    */
   async findByUsername(username) {
-    const user = await this.ctx.model.User.findOne({
+    const user = await this.ctx.model.Admin.findOne({
       where: { username },
     });
     return user;

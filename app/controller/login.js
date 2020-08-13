@@ -18,23 +18,29 @@ class LoginController extends Controller {
    * 用户登录
    */
   async check() {
-    const { ctx, app } = this;
-    const { user } = ctx.service;
-    const { password, username } = ctx.request.body;
-    ctx.validate({
-      username: { type: 'string', required: true },
-      password: { type: 'string', required: true },
-    }, ctx.request.body);
-    const result = await user.findByUsername(username);
-    if (!result) {
-      ctx.helper.fail({ ctx, res: '用户名或密码错误' });
-      return;
+    try {
+      console.log('--->');
+      const { ctx, app } = this;
+      const { user } = ctx.service;
+      const { password, username } = ctx.request.body;
+      ctx.validate({
+        username: { type: 'string', required: true },
+        password: { type: 'string', required: true },
+      }, ctx.request.body);
+      const result = await user.findByUsername(username);
+      if (!result) {
+        ctx.helper.fail({ ctx, res: '用户名或密码错误' });
+        return;
+      }
+      if (!ctx.helper.bcompare(password, result.password)) {
+        ctx.helper.fail({ ctx, res: '用户名或密码错误' });
+        return;
+      }
+      ctx.helper.success({ ctx, res: app.getUserJson(result, ctx, 1) });
+    } catch (e) {
+      console.log('login check err==>', e);
     }
-    if (!ctx.helper.bcompare(password, result.password)) {
-      ctx.helper.fail({ ctx, res: '用户名或密码错误' });
-      return;
-    }
-    ctx.helper.success({ ctx, res: app.getUserJson(result, ctx, 1) });
+
   }
 
   /**
@@ -42,22 +48,19 @@ class LoginController extends Controller {
    */
   async register() {
     const { ctx, app } = this;
-    const { user } = ctx.service;
     const usert = ctx.request.body;
     ctx.validate({
-      sex: { type: 'string', required: true },
       username: { type: 'string', required: true },
       password: { type: 'string', required: true },
     }, usert);
-    const { sex, username } = usert;
+    const { username } = usert;
     const password = ctx.helper.bhash(usert.password);
     const newUser = {
       username,
-      sex,
       password,
     };
     // 创建用户
-    const result = await user.create(newUser);
+    const result = await ctx.model.Admin.create(newUser);
     ctx.status = 201;
     ctx.helper.success({ ctx, res: app.getUserJson(result, ctx, 0) });
   }

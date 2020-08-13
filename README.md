@@ -71,8 +71,6 @@ egg-project
 
 ## 🐼 Todo List
 
-:hand: add monitor select from [alinode](https://www.aliyun.com/product/nodejs?spm=a2c4g.11174283.2.1.70ae30b15SwgUh)/[easy-monitor](https://www.npmjs.com/package/easy-monitor)
-
 :hand: add check function when create new phones
 
 :hand: add login pages to prevent attack
@@ -87,11 +85,13 @@ egg-project
 
 :white_check_mark:  add taobao update schedule,to update price. and filters[2020-07-28@ShawnGoethe]
 
+:white_check_mark: add login pages to prevent attack && add  monitor select from [alinode](https://www.aliyun.com/product/nodejs?spm=a2c4g.11174283.2.1.70ae30b15SwgUh)[2020-08-12@ShawnGoethe]
+
 
 
 # 🚩Show
 
-![](https://zehai-github.oss-cn-beijing.aliyuncs.com/index.jpg)
+![](./resource/index.jpg)
 
 
 
@@ -129,7 +129,7 @@ Finally open the web and input `http://127.0.0.1:7001/phone`  and then enjoy it
 ### 3. Direct , u can visit my student VPS
 
 ```shell
-http://39.105.25.74/phone
+http://phones.tbjd.xyz/
 I will update if I remember (use docker images)
 //nothing on it so Don't bother to hack
 ```
@@ -141,7 +141,7 @@ I will update if I remember (use docker images)
 - Blog：[http://zehai.info](http://zehai.info/)
 - Github：http://github.com/ShawnGoethe
 - Contact：569326840@qq.com 
-- 蓝桥杯国家奖获得者，国家本科奖学金获得者
+- 蓝桥杯国家奖，国家本科奖学金
 
   
 

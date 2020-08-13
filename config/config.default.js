@@ -24,8 +24,8 @@ module.exports = appInfo => {
     // myAppNamme: 'egg',
   };
   config.sequelize = {
-    username: 'mall',
-    password: 'MALL',
+    username: 'root',
+    password: 'lpclpyzzh2012',
     dialect: 'mysql',
     host: '39.105.25.74',
     port: 3306,
@@ -34,15 +34,23 @@ module.exports = appInfo => {
   config.siteFile = {
     '/favicon.ico': fs.readFileSync('favicon.ico'),
   };
+  config.alinode = {
+    enable: true,
+    server: 'wss://agentserver.node.aliyun.com:8080',
+    appid: '85891',
+    secret: '8f402837e41341b75fcb22bb8a5df8c588e39497',
+  };
   config.jwt = {
     secret: 'zzestlgcjwtsecret',
     getToken(ctx) {
+
       if (
-        ctx.headers.authorization &&
-        (ctx.headers.authorization.split(' ')[0] === 'Bearer' ||
+        ctx.headers.authorization && (ctx.headers.authorization.split(' ')[0] === '\"Bearer' ||
           ctx.headers.authorization.split(' ')[0] === 'Token')
       ) {
-        return ctx.headers.authorization.split(' ')[1];
+        let token = ctx.headers.authorization.split(' ')[1];
+        token = token.substring(0, token.length - 1);
+        return token;
       } else if (ctx.query && ctx.query.token) {
         return ctx.query.token;
       }
@@ -53,11 +61,6 @@ module.exports = appInfo => {
     csrf: {
       enable: false,
     },
-  };
-  config.xtransit = {
-    server: 'ws://120.27.24.200:7070',
-    appId: 1,
-    appSecret: 'f7b99d08cc0193106690860047b28970',
   };
 
   return {

@@ -3,7 +3,7 @@
 module.exports = app => {
   const { STRING, ENUM, DATE, NOW } = app.Sequelize;
 
-  const User = app.model.define('user', {
+  const Admin = app.model.define('admin', {
     username: {
       type: STRING(100),
       unique: true,
@@ -15,11 +15,6 @@ module.exports = app => {
     },
     password: {
       type: STRING(32),
-      allowNull: true,
-    },
-    sex: {
-      type: ENUM,
-      values: [ 'M', 'F' ],
       allowNull: true,
     },
     created_at: {
@@ -36,9 +31,9 @@ module.exports = app => {
     },
   }, {
     timestamps: false,
-    tableName: 'user',
+    tableName: 'admins',
     underscored: false,
   });
 
-  return User;
+  return Admin;
 };

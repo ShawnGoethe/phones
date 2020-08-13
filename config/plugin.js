@@ -14,12 +14,12 @@ module.exports = {
     enable: true,
     package: 'egg-jwt',
   },
-  xtransit: {
-    enable: true,
-    package: 'egg-xtransit',
-  },
   validate: {
     enable: true,
     package: 'egg-validate',
+  },
+  alinode: {
+    enable: true,
+    package: 'egg-alinode',
   },
 };

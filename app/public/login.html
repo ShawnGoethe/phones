@@ -47,6 +47,7 @@
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+    // import axios from 'axios'
     new Vue({
         el: '#app',
         data: {
@@ -74,15 +75,21 @@
                             username: this.loginForm.username,
                             token: res.token
                         }
-                        // this.$store.dispatch('SET_USER', user)
-                        // console.log(res)
-                        // this.$store.dispatch('SET_TOKEN', res.token)
-                        // this.$storage.set('admin_user', user, 24 * 60 * 60)
-                        // console.log(this.$router)
-                        // this.$router.push(this.redirect || '/')
-                        // window.open('http://localhost:7001/phoneAdmin')
-                        window.location.href = 'http://localhost:7001/phoneAdmin';
-                    }else{
+                        window.localStorage.setItem('token', JSON.stringify(res.data.data.token));
+                        axios({
+                            method: 'get',
+                            url: '/phoneAdmin',
+                            headers: { 'Authorization': window.localStorage.getItem('token') }
+                        }).then(function (resp) {
+                            console.log(resp);
+                            document.write(resp.data)
+                            // setCookie(window.localStorage.getItem('token'), "http://127.0.0.1/fm1.html");
+                            // this.$router.push('/')
+                            // window.location.href = '/phoneAdmin';
+                        }).catch(function (error) {
+                            console.log(error)
+                        })
+                    } else {
                         this.$message.error('用户名或密码错误')
                     }
                 })
