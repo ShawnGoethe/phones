@@ -7,6 +7,7 @@
     "declarations": true
   },
   "dependencies": {
+    "amqplib": "^0.6.0",
     "crypto": "^1.0.1",
     "egg": "^2.15.1",
     "egg-alinode": "^2.0.1",

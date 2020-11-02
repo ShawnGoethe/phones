@@ -6,7 +6,7 @@ module.exports = {
     await queryInterface.createTable('cpus', {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
       name: STRING(30),
-      age: INTEGER,
+      brand: STRING(30),
       created_at: DATE,
       updated_at: DATE,
     });

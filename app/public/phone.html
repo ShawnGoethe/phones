@@ -12,7 +12,8 @@
     <div id="app">
         <template>
             <div align="center">
-                <h1>📱 <el-link href="/login" target="_blank">phones</el-link></h1>
+                <h1>📱 <el-link href="/login" target="_blank">phones</el-link>
+                </h1>
                 <p></p>
             </div>
             <el-tabs type="border-card">
@@ -46,7 +47,7 @@
                         <el-table-column prop="nowPrice" label="现在价格" width="100"> </el-table-column>
                         <el-table-column prop="show" label="url名称" align="center" width="200">
                             <template slot-scope="scope">
-                                <a :href="'http://'+ scope.row.desc"  target="_blank"
+                                <a :href="'http://'+ scope.row.desc" target="_blank"
                                     style="text-decoration:none;">购买链接</a>
                             </template>
                         </el-table-column>
@@ -90,30 +91,15 @@
             message: 'Hello Vue!',
             search: '',
             phoneData: [],
-            activeIndex: '1',
-            activeIndex2: '1',
             page: 0,
-            size: 9,
-            brandFilter: [
-                { text: 'Xiaomi', value: 'Xiaomi' },
-                { text: 'OPPO', value: 'OPPO' },
-                { text: 'Meizu', value: 'Meizu' },
-                { text: 'Vivo', value: 'Vivo' },
-                { text: 'OnePlus', value: 'OnePlus' },
-                { text: 'Lenovo', value: 'Lenovo' },
-                { text: 'Apple', value: 'Apple' },
-                { text: 'Huawei', value: 'Huawei' },
-                { text: 'ASUS', value: 'ASUS' },
-                { text: 'BlackBerry', value: 'BlackBerry' },
-            ],
-            cpuFilter: [
-                { text: 'Snapdragon', value: 'Snapdragon' },
-                { text: 'MTK', value: 'MTK' },
-                { text: 'HUAWEI Kirin', value: 'HUAWEI Kirin' },
-                { text: 'Samsung Exynos', value: 'Samsung Exynos' },],
+            size: 10,
+            brandFilter: [],
+            cpuFilter: [],
         },
         created: function () {
             this.getPhones(this.size, this.page);
+            this.getBrands();
+            this.getCpus();
             // axios.get('/brands?limit=30&offset=0').then(function (response) {
             //     that.phoneData = response.data;
             // })
@@ -162,12 +148,36 @@
                     that.phoneData = response.data;
                 })
             },
+            getBrands() {
+                let that = this;
+                axios.get('/brands').then(function (response) {
+                    const brandFilter = [];
+                    for (const b of response.data) {
+                        brandFilter.push({
+                            text: b.name, value: b.ename
+                        })
+                    }
+                    that.brandFilter = brandFilter;
+                })
+            },
+            getCpus() {
+                let that = this;
+                axios.get('/cpus').then(function (response) {
+                    const cpuFilter = [];
+                    for (const c of response.data) {
+                        cpuFilter.push({
+                            text: c.name, value: c.name
+                        })
+                    }
+                    that.cpuFilter = cpuFilter;
+                })
+            },
             handleSizeChange(val) {
                 this.size = val;
-                this.getPhones(this.size, 0);
+                this.getPhones(this.size, this.page);
             },
             handleCurrentChange(val) {
-                this.page = val;
+                this.page = val - 1;
                 this.getPhones(this.size, this.page);
             },
 

@@ -89,6 +89,10 @@ egg-project
 
 
 
+## 🔧工具
+
+
+
 # 🚩Show
 
 ![](./resource/index.jpg)
@@ -129,7 +133,7 @@ Finally open the web and input `http://127.0.0.1:7001/phone`  and then enjoy it
 ### 3. Direct , u can visit my student VPS
 
 ```shell
-http://phones.tbjd.xyz/
+https://phones.tbjd.xyz/
 I will update if I remember (use docker images)
 //nothing on it so Don't bother to hack
 ```
@@ -152,5 +156,5 @@ I will update if I remember (use docker images)
 Standing on the shoulders of giants
 
 - [Eggjs.org](https://github.com/eggjs/egg)
-
 - [eggVueSpaTemplate](https://github.com/klren0312/eggVueSpaTemplate)
+- [macrozheng/mall](https://github.com/macrozheng/mall)

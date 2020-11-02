@@ -68,13 +68,13 @@ class TaobaoService extends Service {
         const { ctx } = this;
         const phones = await ctx.model.Phone.findAll();
         const client = new TopClient({
-            appkey: '30116055',
-            appsecret: '4118a19f959f832b850e211ae15b608c',
+            appkey: '31033095',
+            appsecret: 'd3be443cb201f028443801d32b53bbdf',
             REST_URL: 'http://gw.api.taobao.com/router/rest',
         });
         for (const p of phones) {
             client.execute('taobao.tbk.dg.material.optional', {
-                adzone_id: '110371550409',
+                adzone_id: '110773850097',
                 has_coupon: true,
                 is_tmall: true,
                 sort: 'total_sales_desc',

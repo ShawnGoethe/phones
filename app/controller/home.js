@@ -3,19 +3,19 @@
 const Controller = require('egg').Controller;
 const fs = require('fs');
 const path = require('path');
+const pmq = require('./pmq');
 class HomeController extends Controller {
   async index() {
     try {
       const { ctx } = this;
-      // const vueApp = new Vue({
-      //   template: fs.readFileSync(path.join(__dirname, '../public/index.html'), 'utf-8'),
-      // });
-      // const renderer = createRenderer();
-      // renderer.renderToString(vueApp, context, (err, html) => {
-      //   ctx.body = html;
-      // });
-      ctx.response.type = 'html';
-      ctx.response.body = fs.createReadStream(path.join(__dirname, '../public/index.html'));
+      // ctx.response.type = 'html';
+      // ctx.response.body = fs.createReadStream(path.join(__dirname, '../public/index.html'));
+      // test mq
+      const mq = new pmq();
+      mq.sendQueueMsg('testQueue', 'my first message', error => {
+        console.log(error);
+      });
+      ctx.body = '200';
     } catch (e) {
       console.log(e);
     }
